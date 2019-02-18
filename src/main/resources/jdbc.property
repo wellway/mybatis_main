@@ -1,0 +1,4 @@
+jdbc.postgre.driver=org.postgresql.Driver
+jdbc.postgre.url=jdbc:postgresql://10.26.128.81:5432/stock_analyst
+jdbc.postgre.username=yicai
+jdbc.postgre.password=yicai

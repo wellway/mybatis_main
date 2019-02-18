@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="record">
+	<select id="selectRecodr" parameterType="record"
+		resultType="record">
+		select type,date
+		from record
+		where type=#{type}
+		<if test="date!=null and date!='' ">
+			and date = #{date}
+		</if>
+
+	</select>
+
+	<insert id="updateRecord" parameterType="record">
+		update record set date=#{date} ,updatetime=current_timestamp
+		where type=#{type}
+
+	</insert>
+	<select id="selectRecordLastDay" resultType="java.lang.String">
+		select max(date)
+		from record
+		where date <![CDATA[ > ]]> (select
+		date from record where type='calculate')
+	</select>
+	
+</mapper>  
